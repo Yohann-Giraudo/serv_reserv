@@ -1,0 +1,159 @@
+/* STYLE GLOBAL */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: rgba(255, 255, 255, 0.78);
+}
+
+/* SECTION HERO (bannière principale) */
+.hero {
+  background: url('volcan.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  height: 75vh; /* hauteur du bloc image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* BARRE DE RECHERCHE FLOTTANTE */
+.search-box {
+  position: absolute;
+  bottom: -60px; /* décale sous l’image */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 1100px;
+  z-index: 10;
+}
+
+/* Inputs et sélecteurs */
+.search-box .form-control-sm,
+.search-box .form-select-sm {
+  font-size: 0.9rem;
+  border-radius: 6px;
+  padding: 0.25rem 0.4rem;
+}
+
+/* Inputs de type nombre */
+.search-box input[type="number"] {
+  text-align: center;
+}
+
+/* Flèches des number inputs plus discrètes */
+.search-box input::-webkit-inner-spin-button,
+.search-box input::-webkit-outer-spin-button {
+  opacity: 0.5;
+  height: 1rem;
+}
+
+/* Label entre les champs de dates */
+.input-group-text {
+  background-color: #f0f0f0;
+  border: none;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .search-box {
+    position: static !important;
+    transform: none !important;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .search-box label {
+    font-size: 0.9rem;
+  }
+
+  .input-group-text {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+/* TITRES DE SECTIONS */
+.section-title {
+  text-align: center;
+  font-weight: 600;
+  margin: 60px 0 30px;
+}
+
+/* AVIS CLIENTS */
+.avis {
+  background-color: #fff;
+}
+
+/* FOOTER */
+footer {
+  background-color: rgb(9, 45, 77);
+  color: #000;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 60px;
+}
+
+/* Étoiles d’hôtel */
+.hotel-rating i {
+  color: #FFD700;
+  font-size: 1rem;
+  margin-right: 2px;
+}
+
+/* Effet de survol sur les cartes */
+.tilt-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.tilt-card:hover {
+  transform: rotateY(5deg) rotateX(5deg) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Page à propos */
+.hero-about {
+    background: url('volcan.jpg') center/cover no-repeat;
+    height: 45vh;
+}
+
+.hero-about .container {
+    backdrop-filter: brightness(0.7);
+    padding: 40px;
+}
+
+.shadow-sm {
+    background: white;
+}
+
+
+.hero-hotels {
+    background: url('/images/volcan.jpg') center/cover no-repeat;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-hotels .container {
+    backdrop-filter: brightness(0.6);
+    padding: 40px;
+}
+
+.hero-hotels h1,
+.hero-hotels p {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}

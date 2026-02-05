@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Travaillons ensemble</title>
+  <meta name="description" content="Contactez-moi pour un devis ou une mission freelance." />
+  <link rel="stylesheet" href="style_contact_gpt.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+<header>
+  <div class="container topbar">
+    <a class="brand" href="/"><span class="brand__logo">CV</span><span>Votre Nom</span></a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="contact" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container section">
+  <h1>Contact</h1>
+
+  <section class="grid cols-2">
+    <div class="card">
+      <h2>Écrivez-moi</h2>
+      <!-- Adaptez action="/contact" à votre route Node.js -->
+      <form action="/contact" method="POST" novalidate>
+        <div class="field inline">
+          <div>
+            <label for="name">Nom complet</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="field inline">
+          <div>
+            <label for="subject">Sujet</label>
+            <input id="subject" name="subject" type="text" required />
+          </div>
+          <div>
+            <label for="website">Site (optionnel)</label>
+            <input id="website" name="website" type="url" placeholder="https://…" />
+          </div>
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required minlength="10"></textarea>
+          <p class="help">Note : les messages validés seront affichés publiquement.</p>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" name="consent_public" value="yes" required />
+            Je consens à la publication de mon message.
+          </label>
+        </div>
+
+        <input type="submit" value="Envoyer" />
+        <p class="help">Vous recevrez une copie par e-mail si disponible.</p>
+        <!-- Messages d'état côté serveur -->
+        <!-- <p class="success">Merci, votre message a été envoyé.</p> -->
+        <!-- <p class="error">Erreur : merci de réessayer plus tard.</p> -->
+      </form>
+    </div>
+
+    <aside class="card">
+      <h2>Coordonnées</h2>
+      <p><strong>E-mail :</strong> contact@exemple.com</p>
+      <p><strong>Disponibilité :</strong> sous 2 semaines</p>
+      <div class="tags">
+        <span class="tag">Paris</span><span class="tag">Remote</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section card" aria-live="polite">
+    <h2>Messages publics</h2>
+    <!-- Cette liste sera rendue côté serveur avec vos données de BDD -->
+    <div id="public-messages" class="grid">
+      <!-- Exemple (à supprimer une fois branché) -->
+      <article class="card">
+        <p><strong>Marie</strong> — “Super réactivité, je recommande.”</p>
+        <p class="meta">Publié le 12/09/2025</p>
+      </article>
+      <!-- /Exemple -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Votre Nom</span>
+    <span class="meta">Les messages publiés sont modérés</span>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
