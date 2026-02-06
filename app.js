@@ -94,6 +94,11 @@ app.get('/about_us', (req, res) => {
   res.render('about_us');
 });
 
+// Page "Détails hôtel"
+app.get('/hotel_detail', (req, res) => {
+  res.render('hotel_detail');
+});
+
 // ----------------------------------------
 // Formulaire d'ajout d'hôtel
 // ----------------------------------------
