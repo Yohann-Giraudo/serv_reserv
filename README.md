@@ -1,3 +1,9 @@
-Site de Réservation d'hotels.
+# Site de réservation d'hôtels
 
-Ceci est un projet pour mon examen de Dev. Full Stack.
+Projet réalisé dans le cadre de l'examen de Développeur Web Full Stack.
+
+## Stack
+- Node.js / Express
+- MySQL
+- EJS
+- Bootstrap
