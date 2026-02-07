@@ -67,8 +67,24 @@ const upload = multer({ storage: storage });
 
 // Page d'accueil
 app.get('/', (req, res) => {
-  res.render('home');
+  const sql = `
+    SELECT * 
+    FROM hotel 
+    ORDER BY etoiles DESC, prix_nuit ASC 
+    LIMIT 3
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("Erreur MySQL (home) :", err);
+      return res.render("home", { hotels_populaires: [] });
+    }
+
+    return res.render("home", { hotels_populaires: results });
+  });
 });
+
+
 
 // Page de contact
 app.get('/contact', (req, res) => {
@@ -81,10 +97,29 @@ app.get('/hotels', (req, res) => {
   db.query(sql, (err, results) => {
     if (err) {
       console.error("Erreur MySQL :", err);
-      res.send("Erreur lors de la récupération des hôtels.");
-    } else {
-      res.render("hotels", { hotels: results });
+      return res.send("Erreur lors de la récupération des hôtels.");
     }
+    return res.render("hotels", { hotels: results });
+  });
+});
+
+
+// Page "Détails hôtel"
+app.get('/hotels/:id', (req, res) => {
+  const hotelId = req.params.id;
+  const sql = "SELECT * FROM hotel WHERE id = ?";
+
+  db.query(sql, [hotelId], (err, results) => {
+    if (err) {
+      console.error("Erreur MySQL :", err);
+      return res.send("Erreur serveur");
+    }
+
+    if (results.length === 0) {
+      return res.send("Hôtel introuvable");
+    }
+
+    return res.render('hotel_detail', { hotel: results[0] });
   });
 });
 
@@ -94,10 +129,6 @@ app.get('/about_us', (req, res) => {
   res.render('about_us');
 });
 
-// Page "Détails hôtel"
-app.get('/hotel_detail', (req, res) => {
-  res.render('hotel_detail');
-});
 
 // ----------------------------------------
 // Formulaire d'ajout d'hôtel

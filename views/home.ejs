@@ -47,73 +47,76 @@
     <!-- ===================================================== -->
     <!-- SECTION HERO (bannière principale avec recherche) -->
     <!-- ===================================================== -->
-<section class="hero position-relative">
-  <div class="container text-center text-white py-5">
-    <h1 class="fw-bold">Explorez le monde avec QuestExplorer 🌍</h1>
-    <p class="lead mt-3">Trouvez l’hôtel parfait, facilement et rapidement</p>
-  </div>
-
-  <!-- Barre de recherche flottante -->
-  <div class="container search-box position-absolute start-50 translate-middle-x bg-white shadow-lg rounded-4 p-3"
-       style="top: 80%; max-width: 1100px;">
-    <form class="row gy-2 gx-2 align-items-end justify-content-center">
-
-      <!-- Type de séjour -->
-      <div class="col-12 col-sm-6 col-md-2">
-        <label for="typeVoyage" class="form-label fw-semibold text-dark mb-1">Type</label>
-        <select id="typeVoyage" class="form-select form-select-sm">
-          <option selected>Hôtel</option>
-          <option>Vol</option>
-          <option>Vol + Hôtel</option>
-          <option>Croisière</option>
-        </select>
-      </div>
-
-      <!-- Destination -->
-      <div class="col-12 col-sm-6 col-md-3">
-        <label for="destination" class="form-label fw-semibold text-dark mb-1">Destination</label>
-        <input type="search" id="destination" class="form-control form-control-sm"
-               placeholder="Ville ou pays...">
-      </div>
-
-      <!-- Dates -->
-      <div class="col-12 col-md-3">
-        <label class="form-label fw-semibold text-dark mb-1">Dates</label>
-        <div class="input-group input-group-sm">
-          <input type="date" class="form-control" id="depart">
-          <span class="input-group-text">→</span>
-          <input type="date" class="form-control" id="retour">
+    <section class="hero position-relative">
+        <div class="container text-center text-white py-5">
+            <h1 class="fw-bold">Explorez le monde avec QuestExplorer 🌍</h1>
+            <p class="lead mt-3">Trouvez l’hôtel parfait, facilement et rapidement</p>
         </div>
-      </div>
 
-      <!-- Voyageurs -->
-      <div class="col-12 col-md-3">
-        <label class="form-label fw-semibold text-dark mb-1">Voyageurs</label>
-        <div class="d-flex bg-white border rounded-3 shadow-sm p-2 justify-content-between">
-          <div class="text-center flex-fill mx-1">
-            <label class="small text-muted mb-0 d-block">Ad.</label>
-            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="1" max="30" value="2">
-          </div>
-          <div class="text-center flex-fill mx-1">
-            <label class="small text-muted mb-0 d-block">Enf.</label>
-            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="0" max="30" value="0">
-          </div>
-          <div class="text-center flex-fill mx-1">
-            <label class="small text-muted mb-0 d-block">Ch.</label>
-            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="1" max="30" value="1">
-          </div>
+        <!-- Barre de recherche flottante -->
+        <div class="container search-box position-absolute start-50 translate-middle-x bg-white shadow-lg rounded-4 p-3"
+            style="top: 80%; max-width: 1100px;">
+            <form class="row gy-2 gx-2 align-items-end justify-content-center">
+
+                <!-- Type de séjour -->
+                <div class="col-12 col-sm-6 col-md-2">
+                    <label for="typeVoyage" class="form-label fw-semibold text-dark mb-1">Type</label>
+                    <select id="typeVoyage" class="form-select form-select-sm">
+                        <option selected>Hôtel</option>
+                        <option>Vol</option>
+                        <option>Vol + Hôtel</option>
+                        <option>Croisière</option>
+                    </select>
+                </div>
+
+                <!-- Destination -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <label for="destination" class="form-label fw-semibold text-dark mb-1">Destination</label>
+                    <input type="search" id="destination" class="form-control form-control-sm"
+                        placeholder="Ville ou pays...">
+                </div>
+
+                <!-- Dates -->
+                <div class="col-12 col-md-3">
+                    <label class="form-label fw-semibold text-dark mb-1">Dates</label>
+                    <div class="input-group input-group-sm">
+                        <input type="date" class="form-control" id="depart">
+                        <span class="input-group-text">→</span>
+                        <input type="date" class="form-control" id="retour">
+                    </div>
+                </div>
+
+                <!-- Voyageurs -->
+                <div class="col-12 col-md-3">
+                    <label class="form-label fw-semibold text-dark mb-1">Voyageurs</label>
+                    <div class="d-flex bg-white border rounded-3 shadow-sm p-2 justify-content-between">
+                        <div class="text-center flex-fill mx-1">
+                            <label class="small text-muted mb-0 d-block">Ad.</label>
+                            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="1"
+                                max="30" value="2">
+                        </div>
+                        <div class="text-center flex-fill mx-1">
+                            <label class="small text-muted mb-0 d-block">Enf.</label>
+                            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="0"
+                                max="30" value="0">
+                        </div>
+                        <div class="text-center flex-fill mx-1">
+                            <label class="small text-muted mb-0 d-block">Ch.</label>
+                            <input type="number" class="form-control form-control-sm text-center fw-semibold" min="1"
+                                max="30" value="1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton -->
+                <div class="col-12 col-md-1 d-flex align-items-end justify-content-center">
+                    <button type="submit" class="btn btn-primary w-100 py-2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-      </div>
-
-      <!-- Bouton -->
-      <div class="col-12 col-md-1 d-flex align-items-end justify-content-center">
-        <button type="submit" class="btn btn-primary w-100 py-2">
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
-    </form>
-  </div>
-</section>
+    </section>
 
 
 
@@ -124,40 +127,46 @@
         <h2 class="section-title">Hôtels populaires</h2>
         <div class="row g-4">
 
-            <!-- Carte Hôtel -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm tilt-card">
-                    <img src="renard.jpg" class="card-img-top" alt="Hôtel 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Hôtel du Soleil</h5>
-                        <p class="card-text text-muted">Nice — <span class="hotel-rating" data-rating="4.5"></span></p>
-                    </div>
-                </div>
-            </div>
+            <% if (!hotels_populaires || hotels_populaires.length===0) { %>
+                <p class="text-center text-muted">Aucun hôtel pour le moment.</p>
+                <% } else { %>
 
-            <!-- Copie ce bloc pour ajouter un autre hôtel -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm tilt-card">
-                    <img src="renard.jpg" class="card-img-top" alt="Hôtel du Sang">
-                    <div class="card-body">
-                        <h5 class="card-title">Hôtel du Sang</h5>
-                        <p class="card-text text-muted">Pontarlier — <span class="hotel-rating" data-rating="3.5"></span></p>
-                    </div>
-                </div>
-            </div>
+                    <% hotels_populaires.forEach((hotel)=> { %>
+                        <div class="col-md-4">
+                            <div class="card h-100 shadow-sm tilt-card position-relative">
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm tilt-card">
-                    <img src="renard.jpg" class="card-img-top" alt="Hôtel Bismuthe">
-                    <div class="card-body">
-                        <h5 class="card-title">Hôtel Bismuthe</h5>
-                        <p class="card-text text-muted">Orange — <span class="hotel-rating" data-rating="4.1"></span></p>
-                    </div>
-                </div>
-            </div>
+                                <a href="/hotels/<%= hotel.id %>" class="stretched-link"></a>
+
+                                <img src="/hotels/<%= hotel.image || 'default.jpg' %>" class="card-img-top"
+                                    alt="<%= hotel.nom %>">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= hotel.nom %>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        <%= hotel.ville %>
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold">
+                                            <%= hotel.prix_nuit %> € / nuit
+                                        </span>
+                                        <span class="text-warning">
+                                            <%= "★" .repeat(hotel.etoiles) %>
+                                                <%= "☆" .repeat(5 - hotel.etoiles) %>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <% }) %>
+
+                            <% } %>
 
         </div>
     </div>
+
 
     <!-- ===================================================== -->
     <!-- SECTION AVIS CLIENTS -->

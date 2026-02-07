@@ -26,26 +26,36 @@
 
         <div class="row g-4">
 
-            <% if (hotels.length === 0) { %>
+            <% if (!hotels || hotels.length===0) { %>
                 <p class="text-center text-muted">Aucun hôtel trouvé dans la base de données.</p>
-            <% } else { %>
+                <% } else { %>
 
-                <% hotels.forEach(hotel => { %>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm tilt-card">
-                        <img src="/hotels/<%= hotel.image ? hotel.image : 'default.jpg' %>" 
-                             class="card-img-top" alt="<%= hotel.nom %>">
+                    <% hotels.forEach((hotel)=> { %>
+                        <div class="col-md-4">
+                            <div class="card h-100 shadow-sm tilt-card position-relative">
 
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><%= hotel.nom %></h5>
-                            <p class="card-text text-muted"><%= hotel.ville %></p>
+                                <a href="/hotels/<%= hotel.id %>" class="stretched-link"></a>
+
+                                <img src="/hotels/<%= hotel.image || 'default.jpg' %>" class="card-img-top"
+                                    alt="<%= hotel.nom %>">
+
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">
+                                        <%= hotel.nom %>
+                                    </h5>
+                                    <p class="card-text text-muted">
+                                        <%= hotel.ville %>
+                                    </p>
+                                    <p class="fw-bold">
+                                        <%= hotel.prix_nuit %> € / nuit
+                                    </p>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <% }) %>
+                        <% }) %>
 
-            <% } %>
-
+                            <% } %>
         </div>
     </div>
 
