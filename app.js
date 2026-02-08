@@ -67,22 +67,39 @@ const upload = multer({ storage: storage });
 
 // Page d'accueil
 app.get('/', (req, res) => {
-  const sql = `
-    SELECT * 
-    FROM hotel 
-    ORDER BY etoiles DESC, prix_nuit ASC 
+  const sqlHotels = `
+    SELECT *
+    FROM hotel
+    ORDER BY etoiles DESC, prix_nuit ASC
     LIMIT 3
   `;
 
-  db.query(sql, (err, results) => {
+  const sqlReviews = `
+    SELECT r.author, r.rating, r.comment, h.nom AS hotelName
+    FROM reviews r
+    JOIN hotel h ON h.id = r.hotel_id
+    WHERE r.is_approved = TRUE
+    ORDER BY RAND()
+    LIMIT 9
+  `;
+
+  db.query(sqlHotels, (err, hotels) => {
     if (err) {
-      console.error("Erreur MySQL (home) :", err);
-      return res.render("home", { hotels_populaires: [] });
+      console.error("Erreur MySQL (home hotels) :", err);
+      return res.render("home", { hotels_populaires: [], reviews: [] });
     }
 
-    return res.render("home", { hotels_populaires: results });
+    db.query(sqlReviews, (err, reviews) => {
+      if (err) {
+        console.error("Erreur MySQL (home reviews) :", err);
+        return res.render("home", { hotels_populaires: hotels, reviews: [] });
+      }
+
+      return res.render("home", { hotels_populaires: hotels, reviews });
+    });
   });
 });
+
 
 
 

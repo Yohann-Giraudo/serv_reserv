@@ -171,65 +171,73 @@
     <!-- ===================================================== -->
     <!-- SECTION AVIS CLIENTS -->
     <!-- ===================================================== -->
-    <div class="container">
-        <h2 class="section-title">Avis de nos clients</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="border rounded p-4 shadow-sm avis">
-                    <p class="fst-italic">“Super séjour ! Chambre impeccable, personnel très gentil.”</p>
-                    <div class="text-end text-muted">— Alice D. ★★★★★</div>
-                </div>
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-4">Avis de nos clients</h2>
+
+        <% if (!reviews || reviews.length===0) { %>
+            <div class="alert alert-secondary text-center">
+                Aucun avis disponible pour le moment.
             </div>
-            <div class="col-md-6">
-                <div class="border rounded p-4 shadow-sm avis">
-                    <p class="fst-italic">“Vue incroyable, petit déjeuner excellent.”</p>
-                    <div class="text-end text-muted">— Marc L. ★★★★☆</div>
+            <% } else { %>
+
+                <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <% for (let i=0; i < reviews.length; i +=3) { const chunk=reviews.slice(i, i + 3); %>
+
+                            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                                <div class="row g-4 justify-content-center">
+
+                                    <% chunk.forEach(r=> { %>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="card h-100 border-0 shadow-sm text-center">
+                                                <div class="card-body">
+                                                    <p class="fst-italic mb-3">“<%= r.comment %>”</p>
+
+                                                    <div class="fw-semibold">
+                                                        <%= r.author %>
+                                                    </div>
+                                                    <div class="text-muted small mb-2">
+                                                        <%= r.hotelName %>
+                                                    </div>
+
+                                                    <div class="text-warning">
+                                                        <% for (let s=1; s <=5; s++) { %>
+                                                            <i
+                                                                class="bi <%= s <= r.rating ? 'bi-star-fill' : 'bi-star' %>"></i>
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+
+                                </div>
+                            </div>
+
+                            <% } %>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Précédent</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Suivant</span>
+                    </button>
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <% } %>
+    </section>
+
 
     <!-- ===================================================== -->
-    <!-- SECTION DESTINATIONS POPULAIRES -->
-    <!-- ===================================================== -->
-    <div class="container my-5">
-        <h2 class="section-title">Destinations en vogue</h2>
-        <div class="row g-4 justify-content-center">
-
-            <!-- Exemple de carte de destination -->
-            <div class="col-md-3">
-                <div class="card border-0 shadow-sm tilt-card">
-                    <a href="hotels" class="stretched-link"></a>
-                    <img src="renard.jpg" class="card-img-top" alt="Rome">
-                    <div class="card-body text-center">
-                        <h6>Rome</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card border-0 shadow-sm tilt-card">
-                    <a href="hotels" class="stretched-link"></a>
-                    <img src="renard.jpg" class="card-img-top" alt="Rome">
-                    <div class="card-body text-center">
-                        <h6>Rome</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card border-0 shadow-sm tilt-card">
-                    <a href="hotels" class="stretched-link"></a>
-                    <img src="renard.jpg" class="card-img-top" alt="Rome">
-                    <div class="card-body text-center">
-                        <h6>Rome</h6>
-                    </div>
-                </div>
-            </div>
-            <!-- Copier ce bloc pour ajouter d’autres destinations -->
-        </div>
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- FOOTER (pied de page du site) -->
+    <!-- FOOTER -->
     <!-- ===================================================== -->
     <footer class="text-light pt-5 pb-3">
         <div class="container">
