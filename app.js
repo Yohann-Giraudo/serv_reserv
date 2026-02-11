@@ -66,11 +66,19 @@ const upload = multer({ storage: storage });
 // ----------------------------------------
 
 // Page d'accueil
-app.get('/', (req, res) => {
-  const sqlHotels = `
+app.get("/", (req, res) => {
+  const sqlHotelsPop = `
     SELECT *
     FROM hotel
     ORDER BY etoiles DESC, prix_nuit ASC
+    LIMIT 3
+  `;
+
+  const sqlHotelsOffres = `
+    SELECT *
+    FROM hotel
+    WHERE is_promo = 1
+    ORDER BY promo_percent DESC, prix_nuit ASC
     LIMIT 3
   `;
 
@@ -83,25 +91,29 @@ app.get('/', (req, res) => {
     LIMIT 9
   `;
 
-  db.query(sqlHotels, (err, hotels) => {
+  db.query(sqlHotelsPop, (err, hotels_populaires) => {
     if (err) {
-      console.error("Erreur MySQL (home hotels) :", err);
-      return res.render("home", { hotels_populaires: [], reviews: [] });
+      console.error("Erreur MySQL (home hotels_pop):", err);
+      return res.render("home", { hotels_populaires: [], hotels_offres: [], reviews: [] });
     }
 
-    db.query(sqlReviews, (err, reviews) => {
-      if (err) {
-        console.error("Erreur MySQL (home reviews) :", err);
-        return res.render("home", { hotels_populaires: hotels, reviews: [] });
+    db.query(sqlHotelsOffres, (err2, hotels_offres) => {
+      if (err2) {
+        console.error("Erreur MySQL (home hotels_offres):", err2);
+        return res.render("home", { hotels_populaires, hotels_offres: [], reviews: [] });
       }
 
-      return res.render("home", { hotels_populaires: hotels, reviews });
+      db.query(sqlReviews, (err3, reviews) => {
+        if (err3) {
+          console.error("Erreur MySQL (home reviews):", err3);
+          return res.render("home", { hotels_populaires, hotels_offres, reviews: [] });
+        }
+
+        return res.render("home", { hotels_populaires, hotels_offres, reviews });
+      });
     });
   });
 });
-
-
-
 
 // Page de contact
 app.get('/contact', (req, res) => {
