@@ -19,8 +19,10 @@
 <body>
 
 
-    <% const DETAIL_BASE="/hotels" ; const getId=(h)=> h.id ?? h.id_hotel;
-        %>
+    <%  // Helpers globaux pour la page home
+        const DETAIL_BASE="/hotels" ;
+        const getId=(h)=> h.id ?? h.id_hotel;
+    %>
 
 
 
@@ -324,8 +326,8 @@
                     <% } else { %>
 
                         <% hotels_offres.forEach((h)=> {
+                            // Calcul prix promo
                             const id = getId(h);
-
                             const price = Number(h.prix_nuit ?? 0);
                             const promo = Number(h.promo_percent ?? 0);
                             const isPromo = h.is_promo && promo > 0;
